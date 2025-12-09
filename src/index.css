@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Alento - Sistema de Acompanhamento Psicológico
+   Paleta de cores orgânica e acolhedora
+   Todas as cores devem estar em HSL
+*/
+
+@layer base {
+  :root {
+    /* Fundo principal - Bege neutro */
+    --background: 33 46% 91%; /* #F5EBDD */
+    --foreground: 197 42% 30%; /* #2C596A - Azul profundo para textos principais */
+
+    /* Cards - Off-white suave */
+    --card: 36 43% 97%; /* #FAF8F5 */
+    --card-foreground: 197 42% 30%;
+
+    --popover: 36 43% 97%;
+    --popover-foreground: 197 42% 30%;
+
+    /* Primária - Azul serenity */
+    --primary: 203 38% 63%; /* #7DA5C5 */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 203 38% 56%; /* 8% mais escuro para hover */
+
+    /* Secundária - Azul profundo */
+    --secondary: 197 42% 30%; /* #2C596A */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted - Cinza suave */
+    --muted: 36 43% 97%; /* #FAF8F5 */
+    --muted-foreground: 210 7% 46%; /* #6C757D - Texto secundário */
+
+    /* Accent - Bege claro */
+    --accent: 33 46% 93%;
+    --accent-foreground: 197 42% 30%;
+
+    /* Erro/alerta - Coral claro */
+    --destructive: 9 72% 70%; /* #E98B7C */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Warning - Amarelo suave */
+    --warning: 36 100% 70%;
+    --warning-foreground: 197 42% 30%;
+
+    --border: 33 20% 85%; /* Bordas suaves */
+    --input: 36 43% 97%; /* Fundo de inputs */
+    --ring: 203 38% 63%; /* Ring com cor primária */
+
+    /* Cores específicas do sistema */
+    --health-success: 108 25% 69%; /* #A8C3A0 - Verde suave */
+    --health-warning: 9 72% 70%; /* Coral */
+    --health-danger: 9 72% 60%; /* Coral mais escuro */
+    --health-info: 203 38% 63%; /* Azul serenity */
+    
+    /* Gradientes para humor */
+    --mood-excellent: 108 25% 69%; /* Verde suave */
+    --mood-good: 120 30% 65%;
+    --mood-neutral: 36 40% 70%;
+    --mood-poor: 25 60% 65%;
+    --mood-critical: 9 72% 70%; /* Coral */
+    
+    /* Sombras suaves */
+    --shadow-soft: 0 0% 0% / 0.10;
+    --shadow-card: 0 0% 0% / 0.08;
+
+    --radius: 1.5rem; /* 24px - bordas arredondadas */
+
+    --sidebar-background: 36 43% 97%;
+    --sidebar-foreground: 197 42% 30%;
+    --sidebar-primary: 203 38% 63%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 33 46% 93%;
+    --sidebar-accent-foreground: 197 42% 30%;
+    --sidebar-border: 33 20% 88%;
+    --sidebar-ring: 203 38% 63%;
+  }
+
+  .dark {
+    /* Dark mode - mantendo a harmonia acolhedora */
+    --background: 197 42% 12%;
+    --foreground: 33 46% 91%;
+
+    --card: 197 42% 15%;
+    --card-foreground: 33 46% 91%;
+
+    --popover: 197 42% 15%;
+    --popover-foreground: 33 46% 91%;
+
+    --primary: 203 38% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 203 38% 48%;
+
+    --secondary: 197 42% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 197 20% 20%;
+    --muted-foreground: 210 7% 60%;
+
+    --accent: 197 20% 22%;
+    --accent-foreground: 33 46% 91%;
+
+    --destructive: 9 72% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 36 100% 60%;
+    --warning-foreground: 197 42% 12%;
+
+    --border: 197 20% 25%;
+    --input: 197 20% 22%;
+    --ring: 203 38% 55%;
+    
+    --health-success: 108 25% 55%;
+    --health-warning: 9 72% 60%;
+    --health-danger: 9 72% 50%;
+    --health-info: 203 38% 55%;
+    
+    --mood-excellent: 108 25% 55%;
+    --mood-good: 120 30% 55%;
+    --mood-neutral: 36 40% 60%;
+    --mood-poor: 25 60% 55%;
+    --mood-critical: 9 72% 60%;
+
+    --sidebar-background: 197 42% 15%;
+    --sidebar-foreground: 33 46% 91%;
+    --sidebar-primary: 203 38% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 197 20% 22%;
+    --sidebar-accent-foreground: 33 46% 91%;
+    --sidebar-border: 197 20% 25%;
+    --sidebar-ring: 203 38% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    line-height: 1.6; /* Line-height generoso para legibilidade */
+  }
+
+  /* Tipografia Manrope */
+  h1 {
+    @apply text-3xl font-bold; /* 28-32px, weight 700 */
+  }
+
+  h2 {
+    @apply text-2xl font-semibold; /* 22-24px, weight 600 */
+  }
+
+  /* Texto padrão já é 16px regular (400) por padrão */
+  
+  /* Inputs com bordas arredondadas e sombras suaves */
+  input, textarea, select {
+    @apply rounded-2xl; /* 16px de arredondamento */
+  }
+
+  /* Cards com sombras suaves */
+  .card-shadow {
+    box-shadow: 0 2px 8px hsl(var(--shadow-card));
+  }
+
+  /* Botões com hover suave */
+  button:not(:disabled):hover {
+    filter: brightness(0.92); /* Escurece 8% */
+  }
+}
+
+@layer components {
+  /* Classes utilitárias customizadas */
+  .text-secondary {
+    @apply text-sm text-muted-foreground; /* 14px, cinza suave */
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-hover rounded-2xl px-6 py-3 font-semibold transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:brightness-90 rounded-2xl px-6 py-3 font-semibold transition-all duration-200;
+  }
+
+  /* Cards com estilo orgânico */
+  .card-organic {
+    @apply bg-card text-card-foreground rounded-3xl p-6 shadow-sm border border-border/50;
+  }
+  
+  /* Estilos de placeholder para inputs da página Auth */
+  input::placeholder {
+    color: #A9A39A;
+    opacity: 1;
+  }
+  
+  input:-ms-input-placeholder {
+    color: #A9A39A;
+  }
+  
+  input::-ms-input-placeholder {
+    color: #A9A39A;
+  }
+  
+  /* Estilos para tabs da página Auth */
+  [data-state="active"][data-active-border] {
+    border-bottom-color: #3A6F8F !important;
+  }
+}
