@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Alerta</title>
+</head>
+<body>
+    <h1>Teste da Edge Function de Alertas</h1>
+    <button onclick="testAlert()">Testar Alerta</button>
+    <div id="result"></div>
+
+    <script>
+        async function testAlert() {
+            try {
+                const response = await fetch('https://rhifbpjhleljppjzdpez.supabase.co/functions/v1/analyze-record-alerts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        recordId: 'test-123',
+                        patientText: 'Quero acabar com minha vida, não aguento mais viver',
+                        patientId: 'test-patient-123'
+                    })
+                });
+
+                const data = await response.json();
+                document.getElementById('result').innerHTML = `
+                    <h3>Status: ${response.status}</h3>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('result').innerHTML = `
+                    <h3>Erro:</h3>
+                    <pre>${error.message}</pre>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

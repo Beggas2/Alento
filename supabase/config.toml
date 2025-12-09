@@ -1,0 +1,44 @@
+project_id = "rhifbpjhleljppjzdpez"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[auth]
+enabled = true
+port = 54320
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["https://localhost:3000"]
+jwt_expiry = 3600
+enable_signup = true
+enable_email_confirmations = false
+enable_sms_confirmations = false
+
+[db]
+port = 54322
+
+[studio]
+enabled = true
+port = 54323
+
+[edge_runtime]
+enabled = true
+port = 54324
+
+[functions.analyze-record-alerts]
+verify_jwt = false
+
+[functions.google-calendar-auth]
+verify_jwt = false
+
+[functions.chatbot-ai]
+verify_jwt = true
+
+[functions.voice-transcription]
+verify_jwt = false
+
+[functions.google-calendar-sync]
+verify_jwt = false
