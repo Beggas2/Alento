@@ -71,3 +71,27 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Backend FastAPI
+
+Um backend básico em FastAPI foi adicionado em `backend/` para servir dados de dashboard e autenticação simplificada.
+
+### Executando localmente
+1. Instale dependências do backend:
+   ```bash
+   cd backend
+   python -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   ```
+2. Inicie o servidor:
+   ```bash
+   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+   ```
+3. O frontend está configurado para consumir o backend em `http://localhost:8000` por padrão (ajustável via `VITE_API_BASE_URL`).
+4. Endpoints disponíveis:
+   - `GET /health` para checar o status.
+   - `POST /auth/signup` e `POST /auth/login` para autenticação.
+   - `GET /dashboard` para dados do painel.
+
+O banco SQLite `alento.db` é criado automaticamente com dados de demonstração na primeira execução.
